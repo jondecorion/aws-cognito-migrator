@@ -77,3 +77,35 @@ python migrate.py \
 * `--csv-path`: Custom path to save the output CSV credentials (Default: `./migrated_users_credentials.csv`)
 * `--yes`: Bypasses the final confirmation summary block and executes immediately
 * `--verbose`: Enables debug-level logging outputs in the console
+
+---
+
+## Understanding the Outputs & CSV File
+
+When running the migration with email notifications suppressed (`--suppress-emails` flag or Option 2 in the interactive menu), the script creates all users silently in the target User Pool and generates a local credentials CSV file (default: `migrated_users_credentials.csv`).
+
+### CSV File Structure
+The generated file uses a simple, standard header structure:
+```csv
+Username,Email,TemporaryPassword
+user_a@example.com,user_a@example.com,akb=q9$uiDDB
+user_b@example.com,user_b@example.com,%^6P54GhC)em
+```
+> [!NOTE]
+> If your User Pool is configured for email-based logins (`UsernameAttributes: ["email"]`), the `Username` and `Email` columns will contain identical email values. For standard username-based pools, they will show their distinct Cognito usernames.
+
+### How to Use the CSV File
+1. **Import to Email tools:** Import this CSV file into Amazon SES, SendGrid, Mailchimp, or your own backend notification service.
+2. **Send Welcome Emails:** Send an email to each user with their temporary password:
+   > **Subject:** Your account has been migrated!
+   > 
+   > Hi, we have upgraded our authentication services. To access your account on our new platform, please sign in using:
+   > * **Email:** `{Email}`
+   > * **Temporary Password:** `{TemporaryPassword}`
+   > 
+   > On your first sign-in, you will be prompted to set a new password to secure your account.
+3. **Forced Reset Flow:** When the user enters these temporary credentials, Cognito intercepts the login attempt and returns a `NEW_PASSWORD_REQUIRED` challenge, forcing them to set a new password before they are granted access.
+
+### 🔒 Security Best Practices
+* **Never commit this CSV to Git:** The file contains temporary plaintext passwords. It is ignored by default in the `.gitignore` included in this repository.
+* **Delete after use:** Once you have sent out your welcome emails, make sure to permanently delete the CSV file from your local machine.

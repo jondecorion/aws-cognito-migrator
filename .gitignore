@@ -1,0 +1,17 @@
+# Python virtual environments and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+
+# IDE files
+.idea/
+.vscode/
+
+# Local credentials and logs (CRITICAL: Never commit these!)
+*.csv
+*.log
+migrated_users_credentials.csv

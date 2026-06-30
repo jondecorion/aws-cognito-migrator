@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <rect width="800" height="520" rx="8" fill="#1e1e1e"/>
+  <!-- Window Header -->
+  <rect width="800" height="30" rx="8" fill="#323232"/>
+  <circle cx="20" cy="15" r="6" fill="#ff5f56"/>
+  <circle cx="40" cy="15" r="6" fill="#ffbd2e"/>
+  <circle cx="60" cy="15" r="6" fill="#27c93f"/>
+  <text x="400" y="20" fill="#a0a0a0" font-family="monospace" font-size="12" text-anchor="middle">migrate.py</text>
+  
+  <!-- Monospace Text Content -->
+  <g font-family="monospace" font-size="13" fill="#f1f1f1">
+    <text x="20" y="60" fill="#4fc1ff"># python migrate.py</text>
+    <text x="20" y="80" fill="#808080">=========================================================</text>
+    <text x="20" y="100" fill="#4ec9b0">      * Cognito-to-Cognito User Migration Tool *</text>
+    <text x="20" y="120" fill="#808080">=========================================================</text>
+    
+    <text x="20" y="150" fill="#ff8000">--- [1] Source AWS Configuration ---</text>
+    
+    <text x="20" y="180">Select Source AWS Profile:</text>
+    <text x="40" y="200">[1] default</text>
+    <text x="40" y="220">[2] production-aws-account</text>
+    <text x="40" y="240">[3] development-aws-account</text>
+    <text x="40" y="260">[4] Enter profile manually</text>
+    <text x="20" y="280">Enter choice number: <tspan fill="#4fc1ff">2</tspan></text>
+    
+    <text x="20" y="300">Source AWS Region [us-east-1]: <tspan fill="#4fc1ff">us-east-1</tspan></text>
+    
+    <text x="20" y="330">Select Source Cognito User Pool ID:</text>
+    <text x="40" y="350">[1] production-users (us-east-1_A1b2C3d4)</text>
+    <text x="40" y="370">[2] test-users (us-east-1_XyZ987ab)</text>
+    <text x="40" y="390">[3] Enter User Pool ID manually</text>
+    <text x="20" y="410">Enter choice number: <tspan fill="#4fc1ff">1</tspan></text>
+    
+    <text x="20" y="440" fill="#6a9955">Scanning source schema... Found 12 custom attributes.</text>
+    <text x="20" y="460" fill="#6a9955">Listing source users... Found 187 users.</text>
+    <text x="20" y="480" fill="#4ec9b0">Migrating users: [████████████████████████████████] 187/187 [100%]</text>
+    <text x="20" y="500" fill="#4ec9b0">Target User Pool created successfully: us-east-1_W1ZUsV6QF</text>
+  </g>
+</svg>

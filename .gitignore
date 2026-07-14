@@ -15,3 +15,4 @@ env/
 *.csv
 *.log
 migrated_users_credentials.csv
+sync_passwords.py
